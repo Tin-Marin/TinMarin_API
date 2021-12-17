@@ -30,7 +30,9 @@ const ExhibitionSchema = new Schema({
         type: String,
         required: true
     }],
-    rating: Number,
+    rating: [{
+        type:Number
+    }],
     sponsorName: [{
         type: String,
         default: ""
