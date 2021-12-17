@@ -52,7 +52,11 @@ const ExhibitionSchema = new Schema({
     curiousInfo: {
         type: String,
         default: "No hay datos curiosos sobre esta exhibición"
-    }
+    },
+    questions: [{ 
+        type: Schema.Types.ObjectId, 
+        ref: "Quiz",
+    }]
 }, {
     timestamps: true,
 });

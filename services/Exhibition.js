@@ -11,6 +11,8 @@ const ExhibitionService = {};
  * @param {string} name
  * @param {string} description
  * @param {Array} images
+ * @param {Array} rating
+ * @param {Array} questions
  * @param {Array} educationArea 
  * @param {number} minimumAge
  * @param {number} maximumAge
@@ -18,7 +20,7 @@ const ExhibitionService = {};
  * @param {number} capacity
  * @returns {Object} Si la verificación es correcta returna verdadero en el elemento 'success' y falso en caso contrario.
  */
-ExhibitionService.verifyFields = ({ name, description, images, educationArea, minimumAge, maximumAge, duration, capacity }) => {
+ExhibitionService.verifyFields = ({ name, description, images, educationArea, minimumAge, maximumAge, duration, capacity, rating, questions}) => {
   let serviceResponse = {
     success: true,
     content: {
@@ -26,7 +28,7 @@ ExhibitionService.verifyFields = ({ name, description, images, educationArea, mi
     }
   }
 
-  if (!name || !description || !images || !educationArea || !minimumAge || !maximumAge || !duration || !capacity) {
+  if (!name || !description || !images || !educationArea || !minimumAge || !maximumAge || !duration || !capacity || !rating || !questions) {
     serviceResponse = {
       success: false,
       content: {
@@ -45,6 +47,8 @@ ExhibitionService.verifyFields = ({ name, description, images, educationArea, mi
  * @param {string} lowercaseName
  * @param {string} description
  * @param {Array} images
+ * @param {Array} rating
+ * @param {Array} questions
  * @param {Array} sponsorName
  * @param {Array} sponsorLogo
  * @param {Array} educationArea 
@@ -55,13 +59,13 @@ ExhibitionService.verifyFields = ({ name, description, images, educationArea, mi
  * @param {string} curiousInfo
  * @returns {Object} Si la verificación es correcta returna verdadero en el elemento 'success' y falso en caso contrario.
  */
-ExhibitionService.verifyUpdate = ({ name, lowercaseName, description, images, sponsorName, sponsorLogo, educationArea, minimumAge, maximumAge, duration, capacity, curiousInfo }) => {
+ExhibitionService.verifyUpdate = ({ name, lowercaseName, description, images, sponsorName, sponsorLogo, educationArea, minimumAge, maximumAge, duration, capacity, curiousInfo, rating, questions }) => {
   let serviceResponse = {
     success: true,
     content: {}
   }
 
-  if (!name && !lowercaseName && !description && !images && !sponsorName && !sponsorLogo && !educationArea && !minimumAge && !maximumAge && !duration && !capacity && !curiousInfo) {
+  if (!name && !lowercaseName && !description && !images && !sponsorName && !sponsorLogo && !educationArea && !minimumAge && !maximumAge && !duration && !capacity && !curiousInfo  && !rating  && !questions) {
     serviceResponse = {
       success: false,
       content: {
@@ -84,6 +88,8 @@ ExhibitionService.verifyUpdate = ({ name, lowercaseName, description, images, sp
   if (duration) serviceResponse.content.duration = duration;
   if (capacity) serviceResponse.content.capacity = capacity;
   if (curiousInfo) serviceResponse.content.curiousInfo = curiousInfo;
+  if (rating) serviceResponse.content.rating= rating;
+  if (questions) serviceResponse.content.questions= questions;
 
   return serviceResponse;
 }
@@ -97,6 +103,8 @@ ExhibitionService.verifyUpdate = ({ name, lowercaseName, description, images, sp
  * @param {Array} images
  * @param {Array} sponsorName
  * @param {Array} sponsorLogo
+ * @param {Array} rating
+ * @param {Array} questions
  * @param {Array} educationArea 
  * @param {number} minimumAge
  * @param {number} maximumAge
@@ -105,7 +113,7 @@ ExhibitionService.verifyUpdate = ({ name, lowercaseName, description, images, sp
  * @param {string} curiousInfo
  * @returns {Object} La exhibición creada.
  */
-ExhibitionService.create = async ({ name, description, images, sponsorName, sponsorLogo, educationArea, minimumAge, maximumAge, duration, capacity, curiousInfo }) => {
+ExhibitionService.create = async ({ name, description, images, sponsorName, sponsorLogo, educationArea, minimumAge, maximumAge, duration, capacity, curiousInfo, rating, questions}) => {
   let serviceResponse = {
     success: true,
     content: {}
@@ -125,7 +133,9 @@ ExhibitionService.create = async ({ name, description, images, sponsorName, spon
       maximumAge,
       duration,
       capacity,
-      curiousInfo
+      curiousInfo,
+      rating,
+      questions
     });
 
     const newExhibitionWasCreated = await newExhibition.save();

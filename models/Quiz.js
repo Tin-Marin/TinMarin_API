@@ -15,10 +15,7 @@ const QuizSchema = new Schema({
         type: String,
         required: true
     },
-    exhibition: { 
-        type: Schema.Types.ObjectId, 
-        ref: "Exhibition",
-        autopopulate: true}
+    
 });
 
 module.exports = mongoose.model('Quiz', QuizSchema);
