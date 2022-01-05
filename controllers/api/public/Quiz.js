@@ -50,4 +50,21 @@ QuizController.findOneById = async (req, res) => {
     }
 }
 
+QuizController.findOneByExhibition = async (req, res) => {
+    const { exhibition } = req.params;
+
+    try {
+        const quizFound = await QuizService.findOneByExhibition(exhibition);
+        if (!quizFound.success) {
+            return res.status(404).json(quizFound.content);
+        }
+
+        return res.status(200).json(quizFound.content);
+    } catch (error) {
+        return res.status(500).json({
+            error: 'Internal Server Error'
+        });
+    }
+}
+
 module.exports = QuizController;

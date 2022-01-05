@@ -15,7 +15,10 @@ const QuizSchema = new Schema({
         type: String,
         required: true
     },
-    
+    exhibition: {
+        type: String,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Quiz', QuizSchema);

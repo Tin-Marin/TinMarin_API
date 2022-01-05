@@ -2,13 +2,13 @@ const QuizModel = require('./../models/Quiz');
 
 const QuizService = {};
 
-QuizService.verifyFields = ({ question, options, correct_option }) => {
+QuizService.verifyFields = ({ question, options, correct_option, exhibition }) => {
     let serviceResponse = {
         success: true,
         content: {}
     }
 
-    if (!question || !options || !correct_option ) {
+    if (!question || !options || !correct_option || !exhibition) {
         serviceResponse = {
           success: false,
           content: {
@@ -20,13 +20,13 @@ QuizService.verifyFields = ({ question, options, correct_option }) => {
     return serviceResponse;
 }
 
-QuizService.verifyUpdate = ({ question, options, correct_option }) => {
+QuizService.verifyUpdate = ({ question, options, correct_option, exhibition }) => {
     let serviceResponse = {
         success: true,
         content: {}
     }
 
-    if (!question && !options && !correct_option ) {
+    if (!question && !options && !correct_option && !exhibition ) {
         serviceResponse = {
           success: false,
           content: {
@@ -39,12 +39,12 @@ QuizService.verifyUpdate = ({ question, options, correct_option }) => {
     if (question) serviceResponse.content.question = question;
     if (options) serviceResponse.content.options = options;
     if (correct_option) serviceResponse.content.correct_option = correct_option;
-    //if (exhibition) serviceResponse.content.exhibition = exhibition;
+    if (exhibition) serviceResponse.content.exhibition = exhibition;
 
     return serviceResponse;
 }
 
-QuizService.create = async ({ question, options, correct_option }) => {
+QuizService.create = async ({ question, options, correct_option, exhibition }) => {
     let serviceResponse = {
         success: true,
         content: {}
@@ -55,7 +55,7 @@ QuizService.create = async ({ question, options, correct_option }) => {
             question,
             options,
             correct_option,
-            //exhibition
+            exhibition
         });
 
         const newQuizWasCreated = await newQuiz.save();
@@ -148,6 +148,31 @@ QuizService.findOneById = async (_id) => {
     return serviceResponse;
   } catch(error) {
     throw new Error('Internal Server Error');
+  }
+}
+
+QuizService.findOneByExhibition = async ({ exhibition }) => {
+  let serviceResponse = {
+    success: true,
+    content: {}
+  }
+
+  try{
+    const quiz = await QuizModel.findOne({ exhibition: exhibition }).exec();
+    if (!quiz) {
+      serviceResponse = {
+        success: false,
+        content: {
+          error: 'Quiz not found.'
+        }
+      }
+    } else {
+      serviceResponse.content = quiz;
+    }
+
+    return serviceResponse;
+  } catch(error) {
+    throw new Error('Internal Server Error.')
   }
 }
 
