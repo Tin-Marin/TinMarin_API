@@ -2,13 +2,13 @@ const QuizModel = require('./../models/Quiz');
 
 const QuizService = {};
 
-QuizService.verifyFields = ({ question, options, correct_option, exhibition }) => {
+QuizService.verifyFields = ({ question, options, correct_option }) => {
     let serviceResponse = {
         success: true,
         content: {}
     }
 
-    if (!question || !options || !correct_option || !exhibition ) {
+    if (!question || !options || !correct_option ) {
         serviceResponse = {
           success: false,
           content: {
@@ -20,13 +20,13 @@ QuizService.verifyFields = ({ question, options, correct_option, exhibition }) =
     return serviceResponse;
 }
 
-QuizService.verifyUpdate = ({ question, options, correct_option, exhibition }) => {
+QuizService.verifyUpdate = ({ question, options, correct_option }) => {
     let serviceResponse = {
         success: true,
         content: {}
     }
 
-    if (!question && !options && !correct_option && !exhibition ) {
+    if (!question && !options && !correct_option ) {
         serviceResponse = {
           success: false,
           content: {
@@ -39,12 +39,12 @@ QuizService.verifyUpdate = ({ question, options, correct_option, exhibition }) =
     if (question) serviceResponse.content.question = question;
     if (options) serviceResponse.content.options = options;
     if (correct_option) serviceResponse.content.correct_option = correct_option;
-    if (exhibition) serviceResponse.content.exhibition = exhibition;
+    //if (exhibition) serviceResponse.content.exhibition = exhibition;
 
     return serviceResponse;
 }
 
-QuizService.create = async ({ question, options, correct_option, exhibition }) => {
+QuizService.create = async ({ question, options, correct_option }) => {
     let serviceResponse = {
         success: true,
         content: {}
@@ -55,7 +55,7 @@ QuizService.create = async ({ question, options, correct_option, exhibition }) =
             question,
             options,
             correct_option,
-            exhibition
+            //exhibition
         });
 
         const newQuizWasCreated = await newQuiz.save();
