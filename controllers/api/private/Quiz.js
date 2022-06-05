@@ -1,4 +1,5 @@
 const QuizService = require('./../../../services/Quiz');
+const { verifyId } = require('./../../../utils/MongoUtils');
 
 const QuizController = {};
 
