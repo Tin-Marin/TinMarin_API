@@ -25,7 +25,7 @@ ExhibitionController.addNewExhibition = async (req, res) => {
   const fieldsValidation = ExhibitionService.verifyFields(req.body);
 
   if (!fieldsValidation.success) {
-    return res.status(400).json(fieldsValidation.content);
+    return res.status (400).json(fieldsValidation.content);
   }
 
   try {

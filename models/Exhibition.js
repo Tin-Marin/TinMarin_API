@@ -30,9 +30,6 @@ const ExhibitionSchema = new Schema({
         type: String,
         required: true
     }],
-    rating: [{
-        type:Number
-    }],
     sponsorName: [{
         type: String,
         default: ""
@@ -53,14 +50,14 @@ const ExhibitionSchema = new Schema({
         type: String,
         default: "No hay datos curiosos sobre esta exhibición"
     },
-    questions: [{ 
-        type: Schema.Types.ObjectId, 
-        ref: "Quiz",
-    }],
     sound: {
         type: String,
         default: "https://firebasestorage.googleapis.com/v0/b/tinmarinapp-32b99.appspot.com/o/exhibitSound.mp3?alt=media&token=68d25e82-34b4-4cad-82f7-303bde8b7eb1"
-    }
+    },
+    questions: [{ 
+        type: Schema.Types.ObjectId, 
+        ref: "Quiz",
+    }]
 }, {
     timestamps: true,
 });

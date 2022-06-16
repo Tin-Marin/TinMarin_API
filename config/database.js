@@ -1,10 +1,10 @@
 const Mongoose = require("mongoose");
 
-const dbhost = process.env.DBHOST || "localhost";
-const dbport = process.env.DBPORT || "27017";
+const dbhost = process.env.DBHOST || "tmapp2";
+const dbport = process.env.DBPORT || "tDFnU42xoeajGnaU@cluster0.pvbgr.mongodb.net";
 const dbname = process.env.DBNAME || "TinMarinApp";
 
-const uri = process.env.DBURI || `mongodb://${dbhost}:${dbport}/${dbname}`;
+const uri = process.env.DBURI || `mongodb+srv://${dbhost}:${dbport}/${dbname}`;
 
 const connect = async () => {
     try {
