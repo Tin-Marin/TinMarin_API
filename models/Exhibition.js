@@ -56,7 +56,11 @@ const ExhibitionSchema = new Schema({
     questions: [{ 
         type: Schema.Types.ObjectId, 
         ref: "Quiz",
-    }]
+    }],
+    sound: {
+        type: String,
+        default: "https://firebasestorage.googleapis.com/v0/b/tinmarinapp-32b99.appspot.com/o/Efecto%20de%20sonido%20AVIÓN%20%20_%20BANCO%20DE%20SONIDOS%20_%20Sonidos%20para%20niños.mp3?alt=media&token=2774438f-9050-4cc9-80bc-79a275366b26"
+    }
 }, {
     timestamps: true,
 });
