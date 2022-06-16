@@ -20,7 +20,7 @@ const ExhibitionService = {};
  * @param {number} capacity
  * @returns {Object} Si la verificación es correcta returna verdadero en el elemento 'success' y falso en caso contrario.
  */
-ExhibitionService.verifyFields = ({ name, description, images, educationArea, minimumAge, maximumAge, duration, capacity, rating, questions, sound}) => {
+ExhibitionService.verifyFields = ({ name, description, images, educationArea, minimumAge, maximumAge, duration, capacity, rating, questions}) => {
   let serviceResponse = {
     success: true,
     content: {
@@ -28,7 +28,7 @@ ExhibitionService.verifyFields = ({ name, description, images, educationArea, mi
     }
   }
 
-  if (!name || !description || !images || !educationArea || !minimumAge || !maximumAge || !duration || !capacity || !rating || !questions || !sound) {
+  if (!name || !description || !images || !educationArea || !minimumAge || !maximumAge || !duration || !capacity || !rating || !questions) {
     serviceResponse = {
       success: false,
       content: {
