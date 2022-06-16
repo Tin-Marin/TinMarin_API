@@ -59,7 +59,7 @@ const ExhibitionSchema = new Schema({
     }],
     sound: {
         type: String,
-        default: "https://firebasestorage.googleapis.com/v0/b/tinmarinapp-32b99.appspot.com/o/Efecto%20de%20sonido%20AVIÓN%20%20_%20BANCO%20DE%20SONIDOS%20_%20Sonidos%20para%20niños.mp3?alt=media&token=2774438f-9050-4cc9-80bc-79a275366b26"
+        default: "https://firebasestorage.googleapis.com/v0/b/tinmarinapp-32b99.appspot.com/o/exhibitSound.mp3?alt=media&token=68d25e82-34b4-4cad-82f7-303bde8b7eb1"
     }
 }, {
     timestamps: true,
