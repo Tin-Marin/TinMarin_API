@@ -11,23 +11,23 @@ const ExhibitionService = {};
  * @param {string} name
  * @param {string} description
  * @param {Array} images
- * @param {Array} questions
  * @param {Array} educationArea 
  * @param {number} minimumAge
  * @param {number} maximumAge
  * @param {number} duration
  * @param {number} capacity
+ * @param {string} sound
  * @returns {Object} Si la verificación es correcta returna verdadero en el elemento 'success' y falso en caso contrario.
  */
-ExhibitionService.verifyFields = ({ name, description, images, educationArea, minimumAge, maximumAge, duration, capacity, questions }) => {
+ExhibitionService.verifyFields = ({ name, description, images, educationArea, minimumAge, maximumAge, duration, capacity }) => {
   let serviceResponse = {
     success: true,
     content: {
-      message: ""
+      message: "Succes"
     }
   }
 
-  if (!name || !description || !images || !educationArea || !minimumAge || !maximumAge || !duration || !capacity || !questions) {
+  if (!name || !description || !images || !educationArea || !minimumAge || !maximumAge || !duration || !capacity) {
     serviceResponse = {
       success: false,
       content: {
@@ -143,16 +143,16 @@ ExhibitionService.create = async ({ name, description, images, sponsorName, spon
     if (!newExhibitionWasCreated) {
       serviceResponse = {
         success: false,
-          content: {
-            error: "Exhibition could not be created."
-          }
+        content: {
+          error: "Exhibition could not be created."
         }
+      }
     } else {
       serviceResponse.content = newExhibitionWasCreated;
     }
 
     return serviceResponse;
-  } catch(error) {
+  } catch (error) {
     throw new Error("Internal Server Error.")
   }
 }
@@ -170,7 +170,7 @@ ExhibitionService.findOneByName = async ({ name }) => {
     content: {}
   }
 
-  try{
+  try {
     const exhibition = await ExhibitionModel.findOne({ name: name }).exec();
     if (!exhibition) {
       serviceResponse = {
@@ -184,7 +184,7 @@ ExhibitionService.findOneByName = async ({ name }) => {
     }
 
     return serviceResponse;
-  } catch(error) {
+  } catch (error) {
     throw new Error('Internal Server Error.')
   }
 }
@@ -195,7 +195,7 @@ ExhibitionService.findOneByName = async ({ name }) => {
  * @function
  * @returns {Array} Lista de exhibiciones existentes.
  */
-ExhibitionService.getAll = async() => {
+ExhibitionService.getAll = async () => {
   let serviceResponse = {
     success: true,
     content: {}
@@ -215,7 +215,7 @@ ExhibitionService.getAll = async() => {
     }
 
     return serviceResponse;
-  } catch(error) {
+  } catch (error) {
     throw new Error('Internal Server Error')
   }
 }
@@ -247,7 +247,7 @@ ExhibitionService.findByName = async (name) => {
     }
 
     return serviceResponse;
-  } catch(error) {
+  } catch (error) {
     throw new Error('Internal Server Error.');
   }
 }
@@ -279,7 +279,7 @@ ExhibitionService.findOneById = async (_id) => {
     }
 
     return serviceResponse;
-  } catch(error) {
+  } catch (error) {
     throw new Error('Internal Server Error');
   }
 }
@@ -312,7 +312,7 @@ ExhibitionService.updateOneById = async (exhibition, newContent) => {
     }
 
     return serviceResponse;
-  } catch(error) {
+  } catch (error) {
     throw new Error('Internal Server Error');
   }
 }
@@ -342,7 +342,7 @@ ExhibitionService.remove = async (_id) => {
     }
 
     return serviceResponse;
-  } catch(error) {
+  } catch (error) {
     throw new Error('Interal Server Error');
   }
 
