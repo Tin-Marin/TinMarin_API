@@ -11,6 +11,7 @@ const RecommendedWebsiteRouter = require('./v1/RecommendedWebsite');
 const SuggestionTypeRouter = require('./v1/SuggestionType');
 const SuggestionRouter = require('./v1/Suggestion');
 const QuizRouter = require('./v1/Quiz');
+const SoundRouter = require('./v1/Sounds');
 
 router.use('/auth', AuthRouter);
 router.use('/education-areas', EducationAreaRouter);
@@ -22,5 +23,6 @@ router.use('/recommended-websites', RecommendedWebsiteRouter);
 router.use('/suggestiontypes', SuggestionTypeRouter);
 router.use('/suggestions', SuggestionRouter);
 router.use('/quizzes', QuizRouter);
+router.use('/sounds', SoundRouter);
 
 module.exports = router;
