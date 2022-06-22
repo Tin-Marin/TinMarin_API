@@ -56,7 +56,7 @@ const ExhibitionSchema = new Schema({
     }],
     sound: {
         type: String,
-        default: "https://firebasestorage.googleapis.com/v0/b/tinmarinapp-32b99.appspot.com/o/exhibitSound.mp3?alt=media&token=68d25e82-34b4-4cad-82f7-303bde8b7eb1"
+        default: "https://firebasestorage.googleapis.com/v0/b/tinmarinapp-32b99.appspot.com/o/exhibitSound.mp3?alt=media&token=c1fa174d-6763-4d30-9f16-d8a2c83d98a4"
     }
 }, {
     timestamps: true,
